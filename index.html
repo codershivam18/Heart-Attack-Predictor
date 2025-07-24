@@ -1,139 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heart Disease Prediction</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .container {
-            margin-top: 50px;
-        }
-        .form-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .result {
-            margin-top: 20px;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: #e9ecef;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Heart Disease Prediction</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      background-color: #f0f4f8;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    .form-container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #d00000;
+    }
+    .btn-primary {
+      background-color: #d00000;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #a00000;
+    }
+    .alert-info {
+      background-color: #e3f2fd;
+      color: #0d47a1;
+      border: 1px solid #90caf9;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="text-center">Heart Disease Prediction Form</h1>
-        <div class="form-container">
-            <form action="/predict" method="post">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="male">Gender:</label>
-                        <select class="form-control" id="male" name="male">
-                            <option value="1">Male</option>
-                            <option value="0">Female</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="age">Age:</label>
-                        <input type="number" class="form-control" id="age" name="age">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="currentSmoker">Current Smoker:</label>
-                        <select class="form-control" id="currentSmoker" name="currentSmoker">
-                            <option value="1">Yes</option>
-                            <option value="0">No</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="cigsPerDay">Cigarettes Per Day:</label>
-                        <input type="number" class="form-control" id="cigsPerDay" name="cigsPerDay">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="BPMeds">BP Medications:</label>
-                        <select class="form-control" id="BPMeds" name="BPMeds">
-                            <option value="1">Yes</option>
-                            <option value="0">No</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="prevalentStroke">Prevalent Stroke:</label>
-                        <select class="form-control" id="prevalentStroke" name="prevalentStroke">
-                            <option value="1">Yes</option>
-                            <option value="0">No</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="prevalentHyp">Prevalent Hypertension:</label>
-                        <select class="form-control" id="prevalentHyp" name="prevalentHyp">
-                            <option value="1">Yes</option>
-                            <option value="0">No</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="diabetes">Diabetes:</label>
-                        <select class="form-control" id="diabetes" name="diabetes">
-                            <option value="1">Yes</option>
-                            <option value="0">No</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="totChol">Total Cholesterol:</label>
-                        <input type="number" class="form-control" id="totChol" name="totChol">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="sysBP">Systolic BP:</label>
-                        <input type="number" class="form-control" id="sysBP" name="sysBP">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="diaBP">Diastolic BP:</label>
-                        <input type="number" class="form-control" id="diaBP" name="diaBP">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="BMI">BMI:</label>
-                        <input type="number" class="form-control" id="BMI" name="BMI" step="0.01">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="heartRate">Heart Rate:</label>
-                        <input type="number" class="form-control" id="heartRate" name="heartRate">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="glucose">Glucose Level:</label>
-                        <input type="number" class="form-control" id="glucose" name="glucose">
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">Predict</button>
-            </form>
+
+  <div class="container">
+    <h1 class="text-center mb-4">❤️ Heart Disease Risk Prediction</h1>
+
+    <div class="form-container">
+      <form action="/predict" method="post">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Biological Sex:</label>
+            <select class="form-control" name="male" required>
+              <option value="1">Male</option>
+              <option value="0">Female</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Age:</label>
+            <input type="number" class="form-control" name="age" required>
+          </div>
         </div>
-        {% if prediction %}
-        <div class="result">
-            <h2>Prediction Result</h2>
-            <p>Based on the provided information, the prediction for the 10-year risk of heart disease is: <strong>{{ prediction }}</strong></p>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Current Smoker:</label>
+            <select class="form-control" name="currentSmoker" required>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Cigarettes Per Day:</label>
+            <input type="number" class="form-control" name="cigsPerDay" min="0" required>
+          </div>
         </div>
-        {% endif %}
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Blood Pressure Medication:</label>
+            <select class="form-control" name="BPMeds" required>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label>History of Stroke:</label>
+            <select class="form-control" name="prevalentStroke" required>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Prevalent Hypertension:</label>
+            <select class="form-control" name="prevalentHyp" required>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Diabetes:</label>
+            <select class="form-control" name="diabetes" required>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Total Cholesterol (mg/dL):</label>
+            <input type="number" class="form-control" name="totChol" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Systolic BP (mmHg):</label>
+            <input type="number" class="form-control" name="sysBP" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Diastolic BP (mmHg):</label>
+            <input type="number" class="form-control" name="diaBP" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label>BMI:</label>
+            <input type="number" step="0.01" class="form-control" name="BMI" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Heart Rate (bpm):</label>
+            <input type="number" class="form-control" name="heartRate" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Glucose Level (mg/dL):</label>
+            <input type="number" class="form-control" name="glucose" required>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">🔍 Predict</button>
+      </form>
+
+      {% if prediction %}
+      <div class="alert alert-info text-center mt-4">
+        <h4 class="mb-2">🩺 Prediction Result:</h4>
+        <p><strong>{{ prediction }}</strong></p>
+      </div>
+      {% endif %}
     </div>
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
