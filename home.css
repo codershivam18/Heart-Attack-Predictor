@@ -1,0 +1,151 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  background: url("https://images.unsplash.com/photo-1588776814546-ec7d3ff045b6")
+    no-repeat center center fixed;
+  background-size: cover;
+  color: #333;
+  z-index: 1;
+}
+
+.bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.85);
+  z-index: -1;
+}
+
+header {
+  background-color: #d00000;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.home-hero {
+  text-align: center;
+  color: #333;
+  padding: 80px 20px;
+  max-width: 700px;
+  margin: auto;
+  animation: fadeIn 1.5s ease-in;
+}
+
+.home-hero h1 {
+  font-size: 2.8rem;
+  color: #d00000;
+  margin-bottom: 20px;
+}
+
+.home-hero p {
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+}
+
+.cta-button {
+  padding: 15px 30px;
+  background-color: #d00000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.cta-button:hover {
+  background-color: #a00000;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.hero-image:hover {
+  transform: scale(1.05);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+  margin-top: 60px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 768px) {
+  .home-hero h1 {
+    font-size: 2rem;
+  }
+
+  .home-hero p {
+    font-size: 1rem;
+  }
+
+  .cta-button {
+    font-size: 1rem;
+    padding: 12px 24px;
+  }
+}
+.cta-button:focus {
+  outline: 3px solid #ffb3b3;
+  outline-offset: 3px;
+}
+html {
+  scroll-behavior: smooth;
+}
+.section {
+  padding: 60px 20px;
+}
+:root {
+  --red: #d00000;
+  --red-dark: #a00000;
+  --text-color: #333;
+  --overlay: rgba(255, 255, 255, 0.85);
+}
+
+body {
+  color: var(--text-color);
+  background: url("...") no-repeat center center fixed;
+}
+
+header {
+  background-color: var(--red);
+}
+
+.cta-button {
+  background-color: var(--red);
+}
+
+.cta-button:hover {
+  background-color: var(--red-dark);
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prediction Result</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background-image: url("download.jpg");
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .bg-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.85);
+      z-index: 0;
+    }
+
+    .result-box {
+      position: relative;
+      z-index: 1;
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      max-width: 600px;
+      width: 90%;
+      animation: fadeIn 1s ease;
+    }
+
+    .result-box h1 {
+      font-size: 2rem;
+      color: #d00000;
+      margin-bottom: 20px;
+    }
+
+    #resultText {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .low {
+      color: green;
+    }
+
+    .moderate {
+      color: orange;
+    }
+
+    .high {
+      color: red;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 15px;
+      text-decoration: none;
+      background-color: #d00000;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+      background-color: #a00000;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-overlay"></div>
+
+  <div class="result-box">
+    <h1>Your Heart Health Risk</h1>
+    <p id="resultText">Loading...</p>
+    <a href="Index1.html">🔁 Go Back</a>
+  </div>
+
+  <script>
+    const result = localStorage.getItem("heartRiskResult") || "No result found.";
+    const resultText = document.getElementById("resultText");
+    resultText.textContent = result;
+
+    if (result.includes("Low")) resultText.className = "low";
+    else if (result.includes("Moderate")) resultText.className = "moderate";
+    else if (result.includes("High")) resultText.className = "high";
+    else resultText.className = "";
+  </script>
+</body>
+</html>
